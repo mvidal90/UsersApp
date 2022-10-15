@@ -20,10 +20,19 @@ class ActivityList : AppCompatActivity() {
 
         list = findViewById(R.id.list)
 
-        adapter = UserAdapter(this) {
-            //val intent = Intent(this, ActivityDetail::class.java)
-            //startActivity(intent)
+        adapter = UserAdapter(this) { user ->
+            val intent = Intent(this, ActivityDetail::class.java)
+            intent.putExtra("fullName", "${user.name.title} ${user.name.first} ${user.name.last}")
+            intent.putExtra("image", user.picture.large)
+            intent.putExtra("age", user.dob.age.toString())
+            intent.putExtra("country", user.location.country)
+            intent.putExtra("email", user.email)
+            intent.putExtra("phone", user.phone)
+            intent.putExtra("address", "${user.location.street}, ${user.location.city} ( ${user.location.postcode}")
+
+            startActivity(intent)
         }
+
         list.adapter = adapter
 
         refresh()
