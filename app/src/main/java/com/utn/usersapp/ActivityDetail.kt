@@ -2,6 +2,7 @@ package com.utn.usersapp
 
 import android.os.Bundle
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
@@ -39,6 +40,7 @@ class ActivityDetail : AppCompatActivity() {
             }
 
         }
+        email.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         val phone: TextView = findViewById(R.id.phone)
         val number = intent.getStringExtra("phone")
@@ -47,6 +49,7 @@ class ActivityDetail : AppCompatActivity() {
         phone.setOnClickListener {
             startActivity(callIntent)
         }
+        phone.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         val address: TextView = findViewById(R.id.address)
         val addressValue = intent.getStringExtra("address")
@@ -55,6 +58,7 @@ class ActivityDetail : AppCompatActivity() {
         address.setOnClickListener {
             startActivity(geoIntent)
         }
+        address.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
     }
 }
