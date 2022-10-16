@@ -30,9 +30,9 @@ class UserAdapter(
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = users[position]
 
-        Glide.with(context).load(user.picture.thumbnail).into(holder.image)
+        Glide.with(context).load(user.picture.medium).into(holder.image)
         holder.fullName.text = "${user.name.title} ${user.name.first} ${user.name.last}"
-        holder.age.text = user.dob.age.toString()
+        holder.age.text = user.dob.age.toString() + " years old"
         holder.country.text = user.location.country
 
         holder.itemView.setOnClickListener { onCLickUser(user) }

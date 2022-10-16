@@ -28,7 +28,7 @@ class ActivityList : AppCompatActivity() {
             intent.putExtra("country", user.location.country)
             intent.putExtra("email", user.email)
             intent.putExtra("phone", user.phone)
-            intent.putExtra("address", "${user.location.street}, ${user.location.city} ( ${user.location.postcode}")
+            intent.putExtra("address", "${user.location.street.name} ${user.location.street.number}, ${user.location.city} (${user.location.postcode})")
 
             startActivity(intent)
         }

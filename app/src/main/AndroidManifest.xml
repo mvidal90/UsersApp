@@ -13,6 +13,7 @@
         android:theme="@style/Theme.UsersApp">
         <activity
             android:name=".ActivityList"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +23,7 @@
         </activity>
         <activity
             android:name=".ActivityDetail"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:exported="true" />
     </application>
 

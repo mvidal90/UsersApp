@@ -16,22 +16,22 @@ class ActivityDetail : AppCompatActivity() {
         Glide.with(this).load(image).into(imageElement)
 
         val fullName: TextView = findViewById(R.id.full_name)
-        fullName.text = intent.getStringExtra("fullName") ?: ""
+        fullName.text = intent.getStringExtra("fullName")
 
         val age: TextView = findViewById(R.id.age)
-        age.text = intent.getStringExtra("age") ?: ""
+        age.text = intent.getStringExtra("age") + " years old"
 
         val country: TextView = findViewById(R.id.country)
-        country.text = intent.getStringExtra("country") ?: ""
+        country.text = intent.getStringExtra("country")
 
         val email: TextView = findViewById(R.id.email)
-        email.text = intent.getStringExtra("email") ?: ""
+        email.text = intent.getStringExtra("email")
 
         val phone: TextView = findViewById(R.id.phone)
-        phone.text = intent.getStringExtra("phone") ?: ""
+        phone.text = intent.getStringExtra("phone")
 
         val address: TextView = findViewById(R.id.address)
-        address.text = intent.getStringExtra("address") ?: ""
+        address.text = intent.getStringExtra("address")
 
     }
 }
