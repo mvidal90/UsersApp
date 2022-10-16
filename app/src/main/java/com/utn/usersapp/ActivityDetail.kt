@@ -1,6 +1,9 @@
 package com.utn.usersapp
 
 import android.os.Bundle
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -25,13 +28,33 @@ class ActivityDetail : AppCompatActivity() {
         country.text = intent.getStringExtra("country")
 
         val email: TextView = findViewById(R.id.email)
-        email.text = intent.getStringExtra("email")
+        val emailAddress = intent.getStringExtra("email")
+        val sendToIntent: Intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts( "mailto", emailAddress, null))
+        email.text = emailAddress
+        email.setOnClickListener {
+            try {
+                startActivity(sendToIntent)
+            } catch (e: Throwable) {
+                Log.e("USERAPP", "No se encontró ninguna aplicación para enviar el email")
+            }
+
+        }
 
         val phone: TextView = findViewById(R.id.phone)
-        phone.text = intent.getStringExtra("phone")
+        val number = intent.getStringExtra("phone")
+        val callIntent: Intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$number"))
+        phone.text = number
+        phone.setOnClickListener {
+            startActivity(callIntent)
+        }
 
         val address: TextView = findViewById(R.id.address)
-        address.text = intent.getStringExtra("address")
+        val addressValue = intent.getStringExtra("address")
+        val geoIntent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=$addressValue"))
+        address.text = addressValue
+        address.setOnClickListener {
+            startActivity(geoIntent)
+        }
 
     }
 }
