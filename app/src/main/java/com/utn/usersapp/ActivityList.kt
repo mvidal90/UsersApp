@@ -17,7 +17,7 @@ class ActivityList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.fragment_list)
 
         repositoryUsers = UsersApi(this)
 

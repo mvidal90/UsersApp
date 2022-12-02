@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 class ActivityDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail)
+        setContentView(R.layout.fragment_detail)
 
         val image = intent.getStringExtra("image") ?: ""
         val imageElement: ImageView = findViewById(R.id.photo)
