@@ -52,7 +52,7 @@ class FragmentList : Fragment(R.layout.fragment_list), FragmentsDependencies {
                 refresh()
             }
         })
-        refresh()
+        viewModel.getUsers()
     }
 
     private fun refresh() {
