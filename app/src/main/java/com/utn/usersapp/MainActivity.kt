@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), Navigate {
             .commit()
     }
 
-    override fun goToDetail(id: Id) {
+    override fun goToDetail(id: String?) {
         val fragment = supportFragmentManager.fragmentFactory.instantiate(
             classLoader,
             FragmentDetail::class.java.name

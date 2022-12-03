@@ -43,7 +43,7 @@ class FragmentList : Fragment(R.layout.fragment_list), FragmentsDependencies {
         list = view.findViewById(R.id.list)
 
         adapter = UserAdapter(requireContext()) { user ->
-            navigate!!.goToDetail(user.id)
+            navigate!!.goToDetail(user.id.value ?: user.id.name)
         }
         list.adapter = adapter
         refresh = view.findViewById(R.id.refresh)

@@ -12,6 +12,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 public class UsersApi(context: Context) {
     private val baseUrl = "https://randomuser.me/"
     private val usersService: UsersService
+    lateinit var usersList: List<User>
 
     init {
         val moshi: Moshi = Moshi.Builder()
@@ -27,7 +28,6 @@ public class UsersApi(context: Context) {
 
         usersService = retrofit.create(UsersService::class.java)
     }
-
 
     fun getUsers(
         successCallback: (List<User>) -> Unit,
@@ -47,6 +47,7 @@ public class UsersApi(context: Context) {
                         throw IllegalStateException("Llamada exitosa, pero no esta la lista de Usuarios")
                     } else {
                         successCallback(data.results)
+                        usersList = data.results
                     }
                 }
             }
@@ -55,6 +56,17 @@ public class UsersApi(context: Context) {
                 errorCallback(err)
             }
         })
+    }
+
+    fun getUser(
+        idUser: String,
+        successCallback: (User) -> Unit,
+        errorCallback: (Throwable) -> Unit
+    ) {
+        val userFound = usersList.find { u -> u.id.value == idUser || u.id.name == idUser }
+
+        if (userFound != null) successCallback(userFound)
+        else errorCallback(IllegalStateException("Usuario inexistente"))
     }
 
 }

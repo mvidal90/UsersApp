@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class ViewModelDetail (
     val idUser: String,
+    val usersApi: UsersApi
 ) : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
@@ -14,7 +15,15 @@ class ViewModelDetail (
     val error: LiveData<Throwable> = _error
 
     fun getUser() {
-
+        usersApi.getUser(
+            idUser,
+            successCallback = { user ->
+                _user.value = user
+            },
+            errorCallback = { t ->
+                _error.value = t
+            }
+        )
     }
 
 }
